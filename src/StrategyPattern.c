@@ -4,3 +4,8 @@ double bronzePriceStrategy(double amount, double shipping)
 {
     return (0.98 * amount) + shipping;
 }
+
+double silverPriceStrategy(double amount, double shipping)
+{
+    return (0.95 * amount) + shipping;
+}

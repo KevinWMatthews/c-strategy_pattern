@@ -53,3 +53,32 @@ TEST(StrategyPattern, it_can_calculate_a_bronze_price_with_shipping)
     double shipping = 5.0;
     DOUBLES_EQUAL( shipping + BRONZE_RATIO, bronzePriceStrategy(amount, shipping), 0.01 );
 }
+
+#define SILVER_RATIO 0.95
+TEST(StrategyPattern, it_can_calculate_a_silver_price)
+{
+    double amount = 1.0;
+    double shipping = 0.0;
+    DOUBLES_EQUAL( SILVER_RATIO, silverPriceStrategy(amount, shipping), 0.01 );
+}
+
+TEST(StrategyPattern, it_can_calculate_a_different_silver_price)
+{
+    double amount = 0.0;
+    double shipping = 0.0;
+    DOUBLES_EQUAL( 0.00, silverPriceStrategy(amount, shipping), 0.01 );
+}
+
+TEST(StrategyPattern, it_can_calculate_a_silver_price_with_only_shipping)
+{
+    double amount = 0.0;
+    double shipping = 5.0;
+    DOUBLES_EQUAL( shipping, silverPriceStrategy(amount, shipping), 0.01 );
+}
+
+TEST(StrategyPattern, it_can_calculate_a_silver_price_with_shipping)
+{
+    double amount = 1.0;
+    double shipping = 5.0;
+    DOUBLES_EQUAL( shipping + SILVER_RATIO, silverPriceStrategy(amount, shipping), 0.01 );
+}

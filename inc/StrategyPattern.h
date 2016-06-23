@@ -2,5 +2,6 @@
 #define STRATEGY_PATTERN_INCLUDED
 
 double bronzePriceStrategy(double amount, double shipping);
+double silverPriceStrategy(double amount, double shipping);
 
 #endif
