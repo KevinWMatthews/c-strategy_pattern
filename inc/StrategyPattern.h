@@ -3,5 +3,6 @@
 
 double bronzePriceStrategy(double amount, double shipping);
 double silverPriceStrategy(double amount, double shipping);
+double goldPriceStrategy(double amount, double shipping);
 
 #endif

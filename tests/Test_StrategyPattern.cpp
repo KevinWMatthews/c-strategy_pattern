@@ -82,3 +82,25 @@ TEST(StrategyPattern, it_can_calculate_a_silver_price_with_shipping)
     double shipping = 5.0;
     DOUBLES_EQUAL( shipping + SILVER_RATIO, silverPriceStrategy(amount, shipping), 0.01 );
 }
+
+#define GOLD_RATIO 0.90
+TEST(StrategyPattern, it_can_calculate_a_gold_price)
+{
+    double amount = 1.0;
+    double shipping = 0.0;
+    DOUBLES_EQUAL( GOLD_RATIO, goldPriceStrategy(amount, shipping), 0.01 );
+}
+
+TEST(StrategyPattern, it_can_calculate_a_different_gold_price)
+{
+    double amount = 0.0;
+    double shipping = 5.0;
+    DOUBLES_EQUAL( 0.00, goldPriceStrategy(amount, shipping), 0.01 );
+}
+
+TEST(StrategyPattern, gold_customers_have_free_shipping)
+{
+    double amount = 0.0;
+    double shipping = 0.0;
+    DOUBLES_EQUAL( shipping, goldPriceStrategy(amount, shipping), 0.01 );
+}
