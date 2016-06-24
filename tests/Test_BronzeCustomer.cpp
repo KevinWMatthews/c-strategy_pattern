@@ -49,3 +49,8 @@ TEST(BronzeCustomer, it_can_calculate_a_bronze_price_with_shipping)
     double shipping = 5.0;
     DOUBLES_EQUAL( shipping + BRONZE_RATIO, calculatePrice(customer, amount, shipping), 0.01 );
 }
+
+TEST(BronzeCustomer, can_change_to_bronze_strategy)
+{
+    changePriceCategory(customer, bronzePriceStrategy);
+}

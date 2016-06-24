@@ -1,11 +1,11 @@
 #include "DummyCustomer.h"
 
-static double dummyPriceStrategy1(double amount, double shipping)
+double dummyPriceStrategy1(double amount, double shipping)
 {
     return 1.0;
 }
 
-static double dummyPriceStrategy2(double amount, double shipping)
+double dummyPriceStrategy2(double amount, double shipping)
 {
     return 2.0;
 }

@@ -42,3 +42,8 @@ TEST(GoldCustomer, gold_customers_have_free_shipping)
     double shipping = 0.0;
     DOUBLES_EQUAL( shipping, calculatePrice(customer, amount, shipping), 0.01 );
 }
+
+TEST(GoldCustomer, can_change_to_gold_strategy)
+{
+    changePriceCategory(customer, goldPriceStrategy);
+}

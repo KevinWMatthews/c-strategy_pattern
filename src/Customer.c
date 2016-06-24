@@ -11,3 +11,10 @@ double calculatePrice(Customer customer, double amount, double shipping)
         return 0.0;
     return customer->priceStrategy(amount, shipping);
 }
+
+void changePriceCategory(Customer customer, CustomerPriceStrategy priceStrategy)
+{
+    if (customer == 0)
+        return;
+    customer->priceStrategy = priceStrategy;
+}

@@ -4,5 +4,6 @@
 #include "Customer.h"
 
 Customer createSilverCustomer(void);
+double silverPriceStrategy(double amount, double shipping);
 
 #endif

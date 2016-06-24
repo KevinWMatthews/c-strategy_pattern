@@ -49,3 +49,8 @@ TEST(SilverCustomer, it_can_calculate_a_silver_price_with_shipping)
     double shipping = 5.0;
     DOUBLES_EQUAL( shipping + SILVER_RATIO, calculatePrice(customer, amount, shipping), 0.01 );
 }
+
+TEST(SilverCustomer, can_change_to_silver_strategy)
+{
+    changePriceCategory(customer, silverPriceStrategy);
+}

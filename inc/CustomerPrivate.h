@@ -1,8 +1,6 @@
 #ifndef CUSTOMER_PRIVATE_INCLUDED
 #define CUSTOMER_PRIVATE_INCLUDED
 
-typedef double (*CustomerPriceStrategy)(double amount, double shipping);
-
 typedef struct CustomerStruct
 {
     CustomerPriceStrategy priceStrategy;
