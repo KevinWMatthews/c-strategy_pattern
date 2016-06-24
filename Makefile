@@ -72,11 +72,13 @@ src_dep = $(call c_to_d, $(SRC))
 SRC_DEP = $(addprefix $(OBJECT_DIR)/, $(src_dep))
 
 # Auto-generate list of test code
-TEST = $(call get_cpp_src_from_dir_list, $(TEST_DIRS))
-test_obj = $(call cpp_to_o, $(TEST))
+TEST = $(call get_cpp_src_from_dir_list, $(TEST_DIRS)) $(call get_c_src_from_dir_list, $(TEST_DIRS))
+# Convert .c extensions to .o, then convert .cpp extensions to .o
+test_obj = $(call cpp_to_o, $(call c_to_o, $(TEST)))
 TEST_OBJ = $(addprefix $(OBJECT_DIR)/, $(test_obj))
-test_dep = $(call cpp_to_d, $(TEST))
+test_dep = $(call cpp_to_d, $(TEST), $(call c_to_d, $(TEST)))
 TEST_DEP = $(addprefix $(OBJECT_DIR)/, $(test_dep))
+
 
 # Auto-generate list of mock code
 MOCK = $(call get_cpp_src_from_dir_list, $(MOCK_DIRS))
@@ -146,6 +148,10 @@ $(OBJECT_DIR)/%.o: %.cpp
 $(OBJECT_DIR)/%.o: %.c
 	$(SILENCE)$(QUIET)$(MAKE_DIR) $(dir $@)
 	$(SILENCE)$(C_COMPILER) $(DEP_FLAGS) -o $@ -c $< $(CFLAGS) $(INCLUDE_FLAGS)
+
+filelist:
+	@echo $(TEST_OBJ)
+	@echo $(TEST_DEP)
 
 clean:
 	$(SILENCE)$(QUIET)$(REMOVE) $(TARGET)
