@@ -43,6 +43,13 @@ Customer createSilverCustomer(void)
     return static_customer;
 }
 
+Customer createGoldCustomer(void)
+{
+    static_customer = &static_customer_struct;
+    static_customer->priceStrategy = goldPriceStrategy;
+    return static_customer;
+}
+
 double calculatePrice(Customer customer, double amount, double shipping)
 {
     if (customer == 0)
