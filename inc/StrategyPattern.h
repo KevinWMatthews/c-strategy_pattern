@@ -4,6 +4,8 @@
 typedef struct CustomerStruct * Customer;
 
 Customer createBronzeCustomer(void);
+Customer createSilverCustomer(void);
+
 double calculatePrice(Customer customer, double amount, double shipping);
 
 double bronzePriceStrategy(double amount, double shipping);

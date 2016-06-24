@@ -59,7 +59,52 @@ TEST(BronzeCustomer, it_can_calculate_a_bronze_price_with_shipping)
 
 
 
-TEST_GROUP(StrategyPattern)
+TEST_GROUP(SilverCustomer)
+{
+    Customer customer;
+
+    void setup()
+    {
+        customer = createSilverCustomer();
+    }
+
+    void teardown()
+    {
+    }
+};
+
+#define SILVER_RATIO 0.95
+TEST(SilverCustomer, it_can_calculate_a_silver_price)
+{
+    double amount = 1.0;
+    double shipping = 0.0;
+    DOUBLES_EQUAL( SILVER_RATIO, calculatePrice(customer, amount, shipping), 0.01 );
+}
+
+TEST(SilverCustomer, it_can_calculate_a_different_silver_price)
+{
+    double amount = 0.0;
+    double shipping = 0.0;
+    DOUBLES_EQUAL( 0.00, calculatePrice(customer, amount, shipping), 0.01 );
+}
+
+TEST(SilverCustomer, it_can_calculate_a_silver_price_with_only_shipping)
+{
+    double amount = 0.0;
+    double shipping = 5.0;
+    DOUBLES_EQUAL( shipping, calculatePrice(customer, amount, shipping), 0.01 );
+}
+
+TEST(SilverCustomer, it_can_calculate_a_silver_price_with_shipping)
+{
+    double amount = 1.0;
+    double shipping = 5.0;
+    DOUBLES_EQUAL( shipping + SILVER_RATIO, calculatePrice(customer, amount, shipping), 0.01 );
+}
+
+
+
+TEST_GROUP(GoldCustomer)
 {
     void setup()
     {
@@ -69,52 +114,22 @@ TEST_GROUP(StrategyPattern)
     {
     }
 };
-
-#define SILVER_RATIO 0.95
-TEST(StrategyPattern, it_can_calculate_a_silver_price)
-{
-    double amount = 1.0;
-    double shipping = 0.0;
-    DOUBLES_EQUAL( SILVER_RATIO, silverPriceStrategy(amount, shipping), 0.01 );
-}
-
-TEST(StrategyPattern, it_can_calculate_a_different_silver_price)
-{
-    double amount = 0.0;
-    double shipping = 0.0;
-    DOUBLES_EQUAL( 0.00, silverPriceStrategy(amount, shipping), 0.01 );
-}
-
-TEST(StrategyPattern, it_can_calculate_a_silver_price_with_only_shipping)
-{
-    double amount = 0.0;
-    double shipping = 5.0;
-    DOUBLES_EQUAL( shipping, silverPriceStrategy(amount, shipping), 0.01 );
-}
-
-TEST(StrategyPattern, it_can_calculate_a_silver_price_with_shipping)
-{
-    double amount = 1.0;
-    double shipping = 5.0;
-    DOUBLES_EQUAL( shipping + SILVER_RATIO, silverPriceStrategy(amount, shipping), 0.01 );
-}
-
 #define GOLD_RATIO 0.90
-TEST(StrategyPattern, it_can_calculate_a_gold_price)
+TEST(GoldCustomer, it_can_calculate_a_gold_price)
 {
     double amount = 1.0;
     double shipping = 0.0;
     DOUBLES_EQUAL( GOLD_RATIO, goldPriceStrategy(amount, shipping), 0.01 );
 }
 
-TEST(StrategyPattern, it_can_calculate_a_different_gold_price)
+TEST(GoldCustomer, it_can_calculate_a_different_gold_price)
 {
     double amount = 0.0;
     double shipping = 5.0;
     DOUBLES_EQUAL( 0.00, goldPriceStrategy(amount, shipping), 0.01 );
 }
 
-TEST(StrategyPattern, gold_customers_have_free_shipping)
+TEST(GoldCustomer, gold_customers_have_free_shipping)
 {
     double amount = 0.0;
     double shipping = 0.0;
