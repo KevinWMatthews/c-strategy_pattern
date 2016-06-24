@@ -7,10 +7,13 @@ extern "C"
 #include "CppUTest/TestHarness.h"
 #include "CppUTestExt/MockSupport.h"
 
-TEST_GROUP(StrategyPattern)
+TEST_GROUP(BronzeCustomer)
 {
+    Customer customer;
+
     void setup()
     {
+        customer = createBronzeCustomer();
     }
 
     void teardown()
@@ -26,33 +29,46 @@ TEST_GROUP(StrategyPattern)
  */
 
 #define BRONZE_RATIO 0.98
-TEST(StrategyPattern, it_can_calculate_a_bronze_price)
+TEST(BronzeCustomer, it_can_calculate_a_bronze_price)
 {
     double amount = 1.0;
     double shipping = 0.0;
-    DOUBLES_EQUAL( BRONZE_RATIO, bronzePriceStrategy(amount, shipping), 0.01 );
+    DOUBLES_EQUAL( BRONZE_RATIO, calculatePrice(customer, amount, shipping), 0.01 );
 }
 
-TEST(StrategyPattern, it_can_calculate_a_different_bronze_price)
+TEST(BronzeCustomer, it_can_calculate_a_different_bronze_price)
 {
     double amount = 0.0;
     double shipping = 0.0;
-    DOUBLES_EQUAL( 0.00, bronzePriceStrategy(amount, shipping), 0.01 );
+    DOUBLES_EQUAL( 0.00, calculatePrice(customer, amount, shipping), 0.01 );
 }
 
-TEST(StrategyPattern, it_can_calculate_a_bronze_price_with_only_shipping)
+TEST(BronzeCustomer, it_can_calculate_a_bronze_price_with_only_shipping)
 {
     double amount = 0.0;
     double shipping = 5.0;
-    DOUBLES_EQUAL( shipping, bronzePriceStrategy(amount, shipping), 0.01 );
+    DOUBLES_EQUAL( shipping, calculatePrice(customer, amount, shipping), 0.01 );
 }
 
-TEST(StrategyPattern, it_can_calculate_a_bronze_price_with_shipping)
+TEST(BronzeCustomer, it_can_calculate_a_bronze_price_with_shipping)
 {
     double amount = 1.0;
     double shipping = 5.0;
-    DOUBLES_EQUAL( shipping + BRONZE_RATIO, bronzePriceStrategy(amount, shipping), 0.01 );
+    DOUBLES_EQUAL( shipping + BRONZE_RATIO, calculatePrice(customer, amount, shipping), 0.01 );
 }
+
+
+
+TEST_GROUP(StrategyPattern)
+{
+    void setup()
+    {
+    }
+
+    void teardown()
+    {
+    }
+};
 
 #define SILVER_RATIO 0.95
 TEST(StrategyPattern, it_can_calculate_a_silver_price)

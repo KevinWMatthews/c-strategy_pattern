@@ -18,3 +18,13 @@ double goldPriceStrategy(double amount, double shipping)
 {
     return (GOLD_RATIO * amount);
 }
+
+Customer createBronzeCustomer(void)
+{
+    return 0;
+}
+
+double calculatePrice(Customer customer, double amount, double shipping)
+{
+    return bronzePriceStrategy(amount, shipping);
+}
