@@ -1,4 +1,4 @@
-#include "StrategyPattern.h"
+#include "Customer.h"
 
 CustomerStruct static_customer_struct;
 Customer static_customer;

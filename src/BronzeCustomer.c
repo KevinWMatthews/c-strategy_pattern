@@ -1,4 +1,4 @@
-#include "StrategyPattern.h"
+#include "Customer.h"
 
 #define BRONZE_RATIO 0.98
 

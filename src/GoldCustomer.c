@@ -1,4 +1,4 @@
-#include "StrategyPattern.h"
+#include "Customer.h"
 
 #define GOLD_RATIO   0.90
 

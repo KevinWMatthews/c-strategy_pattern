@@ -1,6 +1,6 @@
 extern "C"
 {
-#include "StrategyPattern.h"
+#include "Customer.h"
 }
 
 #include "Test_BronzeCustomer.h"

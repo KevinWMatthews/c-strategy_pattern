@@ -1,5 +1,5 @@
-#ifndef STRATEGY_PATTERN_INCLUDED
-#define STRATEGY_PATTERN_INCLUDED
+#ifndef CUSTOMER_INCLUDED
+#define CUSTOMER_INCLUDED
 
 typedef struct CustomerStruct * Customer;
 

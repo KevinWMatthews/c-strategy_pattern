@@ -1,4 +1,4 @@
-#include "StrategyPattern.h"
+#include "Customer.h"
 
 #define SILVER_RATIO 0.95
 
