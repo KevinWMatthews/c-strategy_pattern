@@ -9,8 +9,6 @@ Customer createGoldCustomer(void);
 
 double calculatePrice(Customer customer, double amount, double shipping);
 
-double bronzePriceStrategy(double amount, double shipping);
-double silverPriceStrategy(double amount, double shipping);
-double goldPriceStrategy(double amount, double shipping);
+#include "CustomerPrivate.h"
 
 #endif
