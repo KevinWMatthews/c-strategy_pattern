@@ -1,6 +1,6 @@
 extern "C"
 {
-#include "Customer.h"
+#include "GoldCustomer.h"
 }
 
 #include "Test_GoldCustomer.h"

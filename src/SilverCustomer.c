@@ -1,4 +1,4 @@
-#include "Customer.h"
+#include "SilverCustomer.h"
 
 #define SILVER_RATIO 0.95
 

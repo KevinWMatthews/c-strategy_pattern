@@ -3,9 +3,7 @@
 
 typedef struct CustomerStruct * Customer;
 
-Customer createBronzeCustomer(void);
-Customer createSilverCustomer(void);
-Customer createGoldCustomer(void);
+// To create a Customer, look in the individual customer header files.
 
 double calculatePrice(Customer customer, double amount, double shipping);
 

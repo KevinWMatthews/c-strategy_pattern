@@ -1,4 +1,4 @@
-#include "Customer.h"
+#include "BronzeCustomer.h"
 
 #define BRONZE_RATIO 0.98
 

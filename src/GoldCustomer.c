@@ -1,4 +1,4 @@
-#include "Customer.h"
+#include "GoldCustomer.h"
 
 #define GOLD_RATIO   0.90
 
